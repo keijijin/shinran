@@ -5,14 +5,14 @@
 ## 前提
 
 - `oc` CLI がログイン済みであること
-- GitHub 上に本リポジトリが公開されていること（URL は以下の `GITHUB_REPO_URL` に置き換え）
+- GitHub 上に本リポジトリが公開されていること（本家の例: `https://github.com/keijijin/shinran.git`）
 
 ## 方法 A: Git ソースから `new-app`（簡単）
 
 プロジェクトを作成（または選択）したうえで:
 
 ```bash
-export GITHUB_REPO_URL="https://github.com/YOUR_ORG/shinran.git"
+export GITHUB_REPO_URL="https://github.com/keijijin/shinran.git"
 
 oc new-project shinran-web --display-name="Shinran reader" || oc project shinran-web
 
