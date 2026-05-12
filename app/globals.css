@@ -1,0 +1,33 @@
+:root {
+  --bg: #f0ebe3;
+  --paper: #fffef8;
+  --ink: #1a1814;
+  --accent: #5c4d3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3d5a80;
+  outline-offset: 2px;
+}
+
+code {
+  font-family: ui-monospace, monospace;
+}

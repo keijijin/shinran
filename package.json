@@ -1,0 +1,33 @@
+{
+  "name": "shinran",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "translate": "node scripts/modern-translate.mjs",
+    "translate:batch": "node scripts/batch-translate-corpus.mjs",
+    "translate:split-kyogyo": "node scripts/split-kyogyo-translation.mjs",
+    "ingest": "node scripts/ingest.mjs",
+    "seed-translation": "node scripts/seed-translation-from-out.mjs",
+    "prebuild": "node scripts/ingest.mjs",
+    "dev": "next dev",
+    "dev:clean": "rm -rf .next && next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "npx --yes serve@14 out -l 3000"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "dotenv": "^16.4.5",
+    "iconv-lite": "^0.6.3",
+    "next": "^15.1.0",
+    "openai": "^4.77.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,12 @@
+.git
+.github
+.next
+out
+node_modules
+.cache
+.env
+.env.*
+!.env.example
+*.md
+!README.md
+.DS_Store

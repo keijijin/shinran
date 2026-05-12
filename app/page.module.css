@@ -1,0 +1,110 @@
+.h1 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+}
+
+.lead {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #3a342c;
+  margin: 0 0 2rem;
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.card {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid #d4cfc4;
+  border-radius: 8px;
+  background: #faf8f3;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: #a69b88;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: #3d5a80;
+}
+
+.h2 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--accent);
+}
+
+.introSection {
+  margin: 0 0 2.25rem;
+}
+
+.introSection h2 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--accent);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #d4cfc4;
+}
+
+.introSection p {
+  margin: 0 0 0.85rem;
+  line-height: 1.8;
+  color: #3a342c;
+}
+
+.introList {
+  margin: 0.5rem 0 1rem 1.25rem;
+  padding: 0;
+  line-height: 1.75;
+  color: #3a342c;
+}
+
+.introList li {
+  margin-bottom: 0.35rem;
+}
+
+.introBlockquote {
+  margin: 1rem 0 1.25rem;
+  padding: 0.85rem 1rem 0.85rem 1.15rem;
+  border-left: 4px solid #a69b88;
+  background: #f3f0e8;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  line-height: 1.75;
+  color: #2c2820;
+}
+
+.introDivider {
+  border: none;
+  border-top: 1px solid #d4cfc4;
+  margin: 2rem 0;
+}
+
+.metaNote {
+  font-size: 0.9rem;
+  color: #6b6358;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #f3f0e8;
+  border-radius: 6px;
+  border: 1px solid #e5e0d6;
+}
+
+.metaNote code {
+  font-size: 0.82em;
+}

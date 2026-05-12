@@ -1,0 +1,86 @@
+.nav {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.brand {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #2c2419;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.brandInner {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.brandMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(44, 36, 25, 0.2);
+  border: 1px solid rgba(184, 134, 11, 0.35);
+}
+
+.brandText {
+  line-height: 1.35;
+}
+
+.brand:hover {
+  text-decoration: underline;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list > li {
+  margin-bottom: 0.75rem;
+}
+
+.groupLabel {
+  display: block;
+  font-weight: 600;
+  color: #4a4234;
+  margin-bottom: 0.35rem;
+}
+
+.group ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+.group a {
+  color: #3d5a80;
+  text-decoration: none;
+}
+
+.group a:hover {
+  text-decoration: underline;
+}
+
+.nested {
+  font-size: 0.82rem;
+  margin: 0.15rem 0;
+}
+
+.note {
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+  color: #6a6358;
+}
+
+.note code {
+  font-size: 0.85em;
+}

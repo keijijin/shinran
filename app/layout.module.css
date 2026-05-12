@@ -1,0 +1,29 @@
+.shell {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #e8e2d8;
+  border-right: 1px solid #d4cfc4;
+  padding: 1.25rem 1rem 2rem;
+}
+
+.main {
+  padding: 1.5rem 2rem 3rem;
+  max-width: 52rem;
+  background: var(--paper);
+  min-height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #d4cfc4;
+  }
+}

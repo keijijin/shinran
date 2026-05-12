@@ -1,0 +1,98 @@
+.wrap {
+  margin-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d4cfc4;
+}
+
+.tab,
+.tabActive {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: #f5f2ea;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab:hover:enabled {
+  background: #ebe6dc;
+}
+
+.tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tabActive {
+  background: #fffef8;
+  border-color: #d4cfc4;
+  font-weight: 600;
+}
+
+.prose {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #1a1814;
+}
+
+.prose p {
+  margin: 0 0 1em;
+}
+
+.translationBody {
+  white-space: pre-wrap;
+}
+
+.meta {
+  margin-top: 1.25rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: #5c574e;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.muted {
+  font-family: system-ui, sans-serif;
+  color: #6a6358;
+  font-size: 0.95rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  padding: 1rem;
+  background: #fffef8;
+  border: 1px solid #e5e0d6;
+  border-radius: 6px;
+}
+
+.colTitle {
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a453c;
+  margin: 0 0 0.75rem;
+}
