@@ -28,4 +28,4 @@ docker build -t shinran-web:local .
 docker run --rm -p 8080:8080 shinran-web:local
 ```
 
-OpenShift へのデプロイ手順は [deploy/openshift/README.md](deploy/openshift/README.md) を参照してください。
+OpenShift で **「Application is not available」** と出る場合は、多くは **Pod が Ready になっていない**か **Service のポートが 8080 と合っていない**ことが原因です。手順は [deploy/openshift/README.md](deploy/openshift/README.md) のトラブルシュートを参照してください。
