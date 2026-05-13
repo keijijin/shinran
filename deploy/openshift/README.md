@@ -21,10 +21,12 @@ oc new-app "$GITHUB_REPO_URL" \
   --strategy=docker
 
 oc expose svc/shinran-web
-oc get route shinran-web -o jsonpath='{.spec.host}{"\n"}'
+oc get route shinran-web -o jsonpath='http://{.spec.host}/{"\n"}'
 ```
 
-生成された Route の URL でサイトにアクセスできます。ビルドログは `oc logs -f bc/shinran-web` で確認してください。
+ブラウザで **`https://`** だけ開けて **`http://`** が開けない環境では、下記「まだブラウザにページが出ないとき」の **edge TLS** を付けてから `https://...` で試してください。
+
+上の `jsonpath` が出す **http://…/** をブラウザで開いてください。ビルドログは `oc logs -f bc/shinran-web` で確認できます。
 
 ## 方法 B: ローカルからバイナリビルド
 
@@ -174,6 +176,56 @@ oc patch route shinran-web --type=json -p='[
 ```
 
 これは `nginxinc/nginx-unprivileged` のエントリポイントが、**IPv6 用の listen 行を自動で書き換えようとして失敗した**ときの **info** です（プロジェクトで **readOnlyRootFilesystem** などが有効だと起きやすい）。その直後に **`Configuration complete; ready for start up`** と **`start worker processes`** が続き、`oc get pods` が **`1/1 Running`** なら、**nginx は正常に動いています**。対処は必須ではありません。
+
+---
+
+## まだブラウザにページが出ないとき（Pod は Running）
+
+`oc get pods` が **`1/1 Running`** で、`oc describe route` に **Endpoints** が付いているのに、ブラウザだけ何も出ない／接続できない場合の切り分けです。
+
+### 1. まず **http://** の URL をそのまま使う
+
+`TLS Termination: <none>` の Route は、インターネット→ルーター区間が **平文 HTTP** です。アドレスバーに **`https://`** と打つと、環境によっては **接続エラー**や **別ホストの証明書**になります。次の 1 行をコピーして **http** のまま開いてください。
+
+```bash
+oc get route shinran-web -o jsonpath='http://{.spec.host}/{"\n"}'
+```
+
+### 2. **`https://` で開きたい**場合：edge TLS を付ける（よく効く）
+
+ルーターで TLS を終端し、Pod へのバックエンドはこれまで通り HTTP です。
+
+```bash
+oc patch route shinran-web -p '{"spec":{"tls":{"termination":"edge","insecureEdgeTerminationPolicy":"Redirect"}}}'
+```
+
+```bash
+oc get route shinran-web -o jsonpath='https://{.spec.host}/{"\n"}'
+```
+
+### 3. 手元の PC から届いているか `curl` で確認
+
+```bash
+HOST=$(oc get route shinran-web -o jsonpath='{.spec.host}')
+curl -vI "http://${HOST}/"
+curl -vI "http://${HOST}/healthz"
+```
+
+**`HTTP/1.1 200`** が返れば、Route の先までは届いています。**Could not resolve host** やタイムアウトなら、**DNS**（Red Hat のサンドボックス `*.opentlc.com` は **Lab VPN や指定 DNS** が必要なことが多い）を確認してください。
+
+### 4. Route を挟まず Service だけ確認（ローカル PC）
+
+```bash
+oc port-forward svc/shinran-web 18080:8080
+```
+
+別ターミナルで:
+
+```bash
+curl -sI http://127.0.0.1:18080/
+```
+
+ここが **200** なら nginx と静的ファイルは問題なく、残りは **Route・DNS・ブラウザの URL（http/https）** のどれかです。
 
 ---
 
