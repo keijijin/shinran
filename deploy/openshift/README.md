@@ -165,6 +165,18 @@ oc patch route shinran-web --type=json -p='[
 
 ---
 
+## nginx の起動ログについて
+
+次のような **1 行**が出ることがあります。
+
+```text
+10-listen-on-ipv6-by-default.sh: info: can not modify /etc/nginx/conf.d/default.conf (read-only file system?)
+```
+
+これは `nginxinc/nginx-unprivileged` のエントリポイントが、**IPv6 用の listen 行を自動で書き換えようとして失敗した**ときの **info** です（プロジェクトで **readOnlyRootFilesystem** などが有効だと起きやすい）。その直後に **`Configuration complete; ready for start up`** と **`start worker processes`** が続き、`oc get pods` が **`1/1 Running`** なら、**nginx は正常に動いています**。対処は必須ではありません。
+
+---
+
 ## その他のトラブルシュート
 
 - **ビルド失敗**: `doc/` と `content/translations.json` がリポジトリに含まれているか確認してください（`prebuild` で ingest が走ります）。
